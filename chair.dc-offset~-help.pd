@@ -1,0 +1,84 @@
+#N canvas 432 216 582 697 10;
+#X obj 23 616 dac~;
+#X obj 22 419 chair.feedback-cancellation~;
+#X obj 22 566 chair.gain~;
+#X obj 221 386 +;
+#X obj 114 359 * 100;
+#X obj 187 394 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#N canvas 1 681 450 300 (subpatch) 0;
+#X array \$0-offset 250 float 4;
+#X coords 0 1 249 -1 250 122 1;
+#X restore 220 487 graph;
+#N canvas 2733 480 344 389 draw_offset 0;
+#X obj 47 184 list;
+#X obj 47 230 list trim;
+#X obj 47 206 list prepend 0;
+#X obj 68 163 list split 250;
+#X obj 29 130 snapshot~;
+#X obj 80 90 metro 1;
+#X obj 80 28 loadbang;
+#X obj 30 28 inlet~;
+#X msg 80 48 1;
+#X obj 80 71 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 29 281 outlet;
+#X obj 47 254 s \$0-offset;
+#X connect 0 0 2 0;
+#X connect 0 0 3 0;
+#X connect 1 0 11 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 1;
+#X connect 3 2 0 1;
+#X connect 4 0 0 0;
+#X connect 4 0 10 0;
+#X connect 5 0 4 0;
+#X connect 6 0 8 0;
+#X connect 7 0 4 0;
+#X connect 8 0 9 0;
+#X connect 9 0 5 0;
+#X restore 114 336 pd draw_offset;
+#X obj 114 502 r \$0-touch;
+#X obj 221 416 osc~;
+#X obj 10 305 cnv 15 120 25 empty empty empty 20 12 0 14 -262130 -66577
+0;
+#X text 293 197 Left outlet: signal without DC-offset;
+#X text 294 214 Right outlet: DC-offset only;
+#X obj 236 355 mtof;
+#X obj 22 309 chair.dc-offset~;
+#X obj 21 527 chair.touchgate~;
+#X obj 21 93 adc~ 1;
+#X obj 236 326 notein;
+#X obj 335 359 ctlout 100;
+#X obj 335 329 * 127;
+#X obj 335 304 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 335 256 loadbang;
+#X msg 335 279 0;
+#X text 366 303 switch internal DC filtering;
+#X text 294 33 The piezo sensor produces a DC offset when bent. While
+this is undesirable for audio output \, we can use it like another
+control parameter \, for example pitch bend. The effect is more notable
+in the center of the Tickle wherere the piezo microphone is located.
+By default the DC-offset is filtered out internally. This filter can
+be switched off by sending 0-63 to controller 100 64-127 will activate
+DC filtering., f 40;
+#X connect 1 0 15 0;
+#X connect 2 0 0 0;
+#X connect 2 0 0 1;
+#X connect 3 0 9 0;
+#X connect 4 0 3 0;
+#X connect 5 0 1 2;
+#X connect 7 0 4 0;
+#X connect 8 0 15 1;
+#X connect 9 0 15 0;
+#X connect 13 0 3 1;
+#X connect 14 0 1 0;
+#X connect 14 1 7 0;
+#X connect 15 0 2 0;
+#X connect 16 0 14 0;
+#X connect 17 0 13 0;
+#X connect 19 0 18 0;
+#X connect 20 0 19 0;
+#X connect 21 0 22 0;
+#X connect 22 0 20 0;
