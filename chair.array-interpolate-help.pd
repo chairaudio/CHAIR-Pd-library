@@ -1,0 +1,15 @@
+#N canvas 2332 195 989 801 12;
+#X obj 100 86 chair.array-interpolate;
+#X floatatom 99 343 5 0 0 0 - - - 0;
+#X floatatom 142 343 5 0 0 0 - - - 0;
+#X floatatom 186 343 5 0 0 0 - - - 0;
+#X floatatom 230 344 5 0 0 0 - - - 0;
+#X floatatom 273 344 5 0 0 0 - - - 0;
+#X obj 103 38 hsl 170 20 0 1 0 0 empty empty empty -2 -10 0 12 #fcfcfc #000000 #000000 0 1;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 0 2 3 0;
+#X connect 0 3 4 0;
+#X connect 0 4 5 0;
+#X connect 6 0 0 0;
+#X coords 0 801 1 800 400 200 0;
